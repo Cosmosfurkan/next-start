@@ -23,6 +23,10 @@ export const env = createEnv({
       .refine((s) => s === "true" || s === "false")
       .transform((s) => s === "true")
       .optional(),
+    STRIPE_SECRET_KEY: z.string(),
+    STRIPE_PUBLISHABLE_KEY: z.string(),
+    STRIPE_PRICE_ID: z.string(),
+    STRIPE_WEBHOOK_SECRET: z.string(),
   },
   onValidationError: (error: ZodError) => {
     console.error(

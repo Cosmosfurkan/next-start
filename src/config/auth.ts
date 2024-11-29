@@ -15,6 +15,20 @@ const options: NextAuthOptions = {
       session.user.id = user.id;
       return session;
     },
+    async signIn() {
+      // Check if user has an active subscription
+      // This is a simplified example - you'll need to implement your own logic
+      return true;
+    },
+    async redirect({ url, baseUrl }) {
+      // Redirect to payment page after sign in if needed
+      if (url.startsWith(baseUrl)) {
+        // You might want to check if the user needs to be redirected to payment
+        // based on their subscription status
+        return `${baseUrl}/payment`;
+      }
+      return url;
+    },
   },
   providers: [
     GoogleProvider({
